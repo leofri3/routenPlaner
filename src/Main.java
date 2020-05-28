@@ -1,3 +1,4 @@
+import Model.Storage;
 import Model.XmlReader;
 import org.xml.sax.SAXException;
 
@@ -6,6 +7,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args)  {
-
+        XmlReader reader = new XmlReader();
+        reader.parseReadXMLFile();
     }
 }
