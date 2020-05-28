@@ -4,6 +4,9 @@
 #XML file
 *.xml
 
+#Png files
+*.png
+
 # Log file
 *.log
 
