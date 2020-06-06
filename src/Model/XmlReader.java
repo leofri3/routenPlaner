@@ -30,9 +30,7 @@ public class XmlReader {
         try {
             document = builder.parse(file);
             document.getDocumentElement().normalize();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (SAXException | IOException e) {
             e.printStackTrace();
         }
         return document;

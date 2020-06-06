@@ -3,17 +3,18 @@ package Model;
 import Model.Objects.Edge;
 import Model.Objects.Node;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Storage {
-    private HashSet<Node> nodes = new HashSet<>();
-    private HashSet<Edge> edges = new HashSet<>();
+    private ArrayList<Node> nodes = new ArrayList<>();
+    private ArrayList<Edge> edges = new ArrayList<>();
 
-    public HashSet<Node> getNodes() {
+    public ArrayList<Node> getNodes() {
         return nodes;
     }
 
-    public HashSet<Edge> getEdges() {
+    public ArrayList<Edge> getEdges() {
         return edges;
     }
 
