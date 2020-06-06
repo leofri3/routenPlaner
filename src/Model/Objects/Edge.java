@@ -4,8 +4,8 @@ public class Edge {
     private String name;
     private float length;
 
-    private Node source;
-    private Node target;
+    private String sourceID;
+    private String  targetID;
 
     public Edge(String name, float length){
         this.name = name;
@@ -17,17 +17,17 @@ public class Edge {
         return "Edge{" +
                 "name='" + name + '\'' +
                 ", length=" + length +
-                ", source=" + source +
-                ", target=" + target +
+                ", source=" + sourceID +
+                ", target=" + targetID +
                 '}';
     }
 
-    public void setSource(Node source) {
-        this.source = source;
+    public void setSource(String sourceID) {
+        this.sourceID = sourceID;
     }
 
-    public void setTarget(Node target) {
-        this.target = target;
+    public void setTarget(String targetID) {
+        this.targetID = targetID;
     }
 
     public String getName() {
@@ -38,11 +38,11 @@ public class Edge {
         return length;
     }
 
-    public Node getSource() {
-        return source;
+    public String getSource() {
+        return sourceID;
     }
 
-    public Node getTarget() {
-        return target;
+    public String getTarget() {
+        return targetID;
     }
 }

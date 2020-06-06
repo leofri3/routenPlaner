@@ -77,8 +77,8 @@ public class XmlReader {
         Model.Objects.Node sourceNode = storage.getNodeByName(source);
         Model.Objects.Node targetNode = storage.getNodeByName(target);
 
-        edge.setSource(sourceNode);
-        edge.setTarget(targetNode);
+        edge.setSource(sourceNode.getId());
+        edge.setTarget(targetNode.getId());
 
         sourceNode.getEdges().add(edge);
         targetNode.getEdges().add(edge);
