@@ -16,6 +16,10 @@ public class XmlReader {
 
   private Storage storage;
 
+  public XmlReader() {
+    storeXMLFile();
+  }
+
   //Converts the XML File to a document (entire XML document)
   private Document readXMLFile() {
 
@@ -103,7 +107,7 @@ public class XmlReader {
   }
 
   //starts the storing of nodes and edges
-  public void storeXMLFile() {
+  private void storeXMLFile() {
     Document document = readXMLFile();
     Storage storage = new Storage();
     NodeList nodeList = document.getElementsByTagName("node");

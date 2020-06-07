@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 
 public class UI extends Application {
 
+  private NodeDrawer nodeDrawer = new NodeDrawer();
+  private Group group = new Group();
+
 
   @Override
   public void start(Stage primaryStage) {
@@ -21,8 +24,9 @@ public class UI extends Application {
     Circle referencePoint2 = new Circle(131, 125, 1);
 
     BorderPane root = new BorderPane();
-    Group group = new Group();
-    group.getChildren().addAll(getImage(), referencePoint1, referencePoint2);
+
+    group.getChildren().add(getImage());
+    addNodes();
     root.setLeft(group);
     primaryStage.setScene(new Scene(root));
     primaryStage.show();
@@ -41,8 +45,7 @@ public class UI extends Application {
     return imgView;
   }
 
-  private Group addNodes(Group group) {
-
-    return group;
+  private Group addNodes() {
+    return nodeDrawer.drawAllNodes(group);
   }
 }

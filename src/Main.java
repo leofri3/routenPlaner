@@ -8,9 +8,6 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args)  {
-        XmlReader reader = new XmlReader();
-        reader.parseReadXMLFile();
 
-        UI ui = new UI();
     }
 }
