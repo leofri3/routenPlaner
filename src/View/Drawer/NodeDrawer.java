@@ -1,8 +1,6 @@
 package View.Drawer;
 
-import Controller.ControllerToView;
-import Model.ModelToController;
-import Model.Objects.Edge;
+import Controller.ConnectionToView.ControllerToView;
 import Model.Objects.Node;
 import View.LatLonToPixelTranslator;
 import View.Objects.Point;

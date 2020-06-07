@@ -1,17 +1,12 @@
 package View;
 
-import Controller.ControllerToView;
+import Controller.ConnectionToView.ControllerToView;
 import View.Drawer.EdgeDrawer;
 import View.Drawer.NodeDrawer;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class UI extends Application {
@@ -19,35 +14,27 @@ public class UI extends Application {
   private ControllerToView controllerToView = new ControllerToView();
   private NodeDrawer nodeDrawer = new NodeDrawer(controllerToView);
   private EdgeDrawer edgeDrawer = new EdgeDrawer(controllerToView);
+  private ImageLoader imageLoader = new ImageLoader();
+  private MenuBarBuilder menuBarBuilder = new MenuBarBuilder();
   private Group group = new Group();
 
 
   @Override
   public void start(Stage primaryStage) {
-
-    Circle referencePoint1 = new Circle(178, 552, 1);
-    Circle referencePoint2 = new Circle(131, 125, 1);
+    primaryStage.setTitle("Route finder");
 
     BorderPane root = new BorderPane();
 
-    group.getChildren().add(getImage());
+    root.setTop(menuBarBuilder.build());
+
+    group.getChildren().add(imageLoader.getImage());
     nodeDrawer.drawAllNodes(group);
     edgeDrawer.drawAllEdges(group);
     root.setLeft(group);
+
     primaryStage.setScene(new Scene(root));
     primaryStage.show();
   }
 
-  private ImageView getImage() {
-    Image img = null;
-    FileInputStream imgFile = null;
-    try {
-      imgFile = new FileInputStream("src/Files/map.png");
-      img = new Image(imgFile);
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
-    ImageView imgView = new ImageView(img);
-    return imgView;
-  }
+
 }

@@ -1,6 +1,6 @@
-package Controller;
+package Controller.ConnectionToView;
 
-import Model.ModelToController;
+import Model.ConnectionToController.ModelToController;
 import Model.Objects.Edge;
 import Model.Objects.Node;
 import java.util.ArrayList;

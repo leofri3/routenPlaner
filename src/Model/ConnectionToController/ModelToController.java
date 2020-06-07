@@ -1,7 +1,9 @@
-package Model;
+package Model.ConnectionToController;
 
+import Model.ConnectionToController.ModelToControllerInterface;
 import Model.Objects.Edge;
 import Model.Objects.Node;
+import Model.XmlReader;
 import java.util.ArrayList;
 
 public class ModelToController implements ModelToControllerInterface {
