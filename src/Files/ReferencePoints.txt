@@ -1,0 +1,2 @@
+bodensee oben links ende - px x: 178 y: 552 / lat: 47.811412 lon: 9.036479
+Jadebusen links aussschlag = px x: 131 y: 125 / lat: 53.442288 lon: 8.113387
