@@ -17,4 +17,6 @@ public interface ControllerToViewInterface {
   public Node getNodeByName(String name);
 
   public Edge getEdgeByName(String name);
+
+  public void startAlgorithm();
 }

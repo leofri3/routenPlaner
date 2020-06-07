@@ -36,4 +36,9 @@ public class ControllerToView implements ControllerToViewInterface {
   public Edge getEdgeByName(String name) {
     return modelToController.getEdgeByName(name);
   }
+
+  @Override
+  public void startAlgorithm() {
+    
+  }
 }
