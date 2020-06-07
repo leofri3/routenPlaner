@@ -3,42 +3,43 @@ package Model.Objects;
 import java.util.HashSet;
 
 public class Node {
-    private String id;
 
-    private float lat;
-    private float lon;
+  private String id;
 
-    private HashSet<Edge> edges = new HashSet<>(); //all edges from this node
+  private float lat;
+  private float lon;
 
-    public Node(String id, float lat, float lon){
-        this.id = id;
-        this.lat = lat;
-        this.lon = lon;
-    }
+  private HashSet<Edge> edges = new HashSet<>(); //all edges from this node
 
-    @Override
-    public String toString() {
-        return "Node{" +
-                "id='" + id + '\'' +
-                ", lat=" + lat +
-                ", lon=" + lon +
-                ", edges=" + edges +
-                '}';
-    }
+  public Node(String id, float lat, float lon) {
+    this.id = id;
+    this.lat = lat;
+    this.lon = lon;
+  }
 
-    public String getId() {
-        return id;
-    }
+  @Override
+  public String toString() {
+    return "Node{" +
+        "id='" + id + '\'' +
+        ", lat=" + lat +
+        ", lon=" + lon +
+        ", edges=" + edges +
+        '}';
+  }
 
-    public float getLat() {
-        return lat;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public float getLon() {
-        return lon;
-    }
+  public float getLat() {
+    return lat;
+  }
 
-    public HashSet<Edge> getEdges() {
-        return edges;
-    }
+  public float getLon() {
+    return lon;
+  }
+
+  public HashSet<Edge> getEdges() {
+    return edges;
+  }
 }

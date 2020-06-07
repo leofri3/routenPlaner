@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.ModelToController;
+import Model.Objects.Edge;
+import Model.Objects.Node;
 import java.util.ArrayList;
 
 public class ControllerToView implements ControllerToViewInterface {
@@ -15,5 +17,15 @@ public class ControllerToView implements ControllerToViewInterface {
   @Override
   public ArrayList getAllEdges() {
     return modelToController.getAllEdges();
+  }
+
+  @Override
+  public Node getNodeByName(String name) {
+    return modelToController.getNodeByName(name);
+  }
+
+  @Override
+  public Edge getEdgeByName(String name) {
+    return modelToController.getEdgeByName(name);
   }
 }
