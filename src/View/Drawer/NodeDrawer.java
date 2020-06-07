@@ -20,12 +20,22 @@ public class NodeDrawer {
     nodes = controllerToView.getAllNodes();
   }
 
-  public Group drawAllNodes(Group group) {
-    for (Node node : nodes) {
+  private Group draw(Group group, ArrayList<Node> routeNodes) {
+    for (Node node : routeNodes) {
       Point point = translator.translateNode(node);
       Circle circle = new Circle(point.getX(), point.getY(), 1);
       group.getChildren().add(circle);
     }
     return group;
+  }
+
+  public Group drawAllNodes(Group group) {
+    ArrayList<Node> allNodes = controllerToView.getAllNodes();
+    return draw(group, allNodes);
+  }
+
+  public Group drawRouteNodes(Group group) {
+    ArrayList<Node> routeNodes = controllerToView.getRouteNodes();
+    return draw(group, routeNodes);
   }
 }

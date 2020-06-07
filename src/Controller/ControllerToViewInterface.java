@@ -10,6 +10,10 @@ public interface ControllerToViewInterface {
 
   public ArrayList getAllEdges();
 
+  public ArrayList getRouteNodes();
+
+  public ArrayList getRouteEdges();
+
   public Node getNodeByName(String name);
 
   public Edge getEdgeByName(String name);

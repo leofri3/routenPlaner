@@ -12,15 +12,13 @@ import javafx.scene.shape.Line;
 public class EdgeDrawer {
   private ControllerToView controllerToView;
   private LatLonToPixelTranslator translator = new LatLonToPixelTranslator();
-  private ArrayList<Edge> edges;
 
   public EdgeDrawer(ControllerToView controllerToView) {
     this.controllerToView = controllerToView;
-    edges = controllerToView.getAllEdges();
   }
 
-  public Group drawAllEdges(Group group) {
-    for (Edge edge : edges) {
+  private Group draw(Group group, ArrayList<Edge> routeEdges) {
+    for (Edge edge : routeEdges) {
       Node sourceNode = controllerToView.getNodeByName(edge.getSource());
       Node targetNode = controllerToView.getNodeByName(edge.getTarget());
       Point sourcePoint = translator.translateNode(sourceNode);
@@ -32,4 +30,13 @@ public class EdgeDrawer {
     return group;
   }
 
+  public Group drawAllEdges(Group group) {
+    ArrayList<Edge> allEdges = controllerToView.getAllEdges();
+    return draw(group, allEdges);
+  }
+
+  public Group drawRouteEdges(Group group) {
+    ArrayList<Edge> routeEdges = controllerToView.getRouteEdges();
+    return draw(group, routeEdges);
+  }
 }

@@ -20,6 +20,16 @@ public class ControllerToView implements ControllerToViewInterface {
   }
 
   @Override
+  public ArrayList getRouteNodes() {
+    return null;
+  }
+
+  @Override
+  public ArrayList getRouteEdges() {
+    return null;
+  }
+
+  @Override
   public Node getNodeByName(String name) { return modelToController.getNodeByName(name); }
 
   @Override
