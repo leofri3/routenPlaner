@@ -20,9 +20,7 @@ public class ControllerToView implements ControllerToViewInterface {
   }
 
   @Override
-  public Node getNodeByName(String name) {
-    return modelToController.getNodeByName(name);
-  }
+  public Node getNodeByName(String name) { return modelToController.getNodeByName(name); }
 
   @Override
   public Edge getEdgeByName(String name) {

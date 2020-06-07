@@ -1,5 +1,7 @@
 package View;
 
+import View.Drawer.EdgeDrawer;
+import View.Drawer.NodeDrawer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.application.Application;
@@ -14,6 +16,7 @@ import javafx.stage.Stage;
 public class UI extends Application {
 
   private NodeDrawer nodeDrawer = new NodeDrawer();
+  private EdgeDrawer edgeDrawer = new EdgeDrawer();
   private Group group = new Group();
 
 
@@ -26,7 +29,8 @@ public class UI extends Application {
     BorderPane root = new BorderPane();
 
     group.getChildren().add(getImage());
-    addNodes();
+    nodeDrawer.drawAllNodes(group);
+    edgeDrawer.drawAllEdges(group);
     root.setLeft(group);
     primaryStage.setScene(new Scene(root));
     primaryStage.show();
@@ -43,9 +47,5 @@ public class UI extends Application {
     }
     ImageView imgView = new ImageView(img);
     return imgView;
-  }
-
-  private Group addNodes() {
-    return nodeDrawer.drawAllNodes(group);
   }
 }

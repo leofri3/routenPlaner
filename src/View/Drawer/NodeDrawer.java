@@ -1,22 +1,22 @@
-package View;
+package View.Drawer;
 
+import Controller.ControllerToView;
 import Model.ModelToController;
 import Model.Objects.Edge;
 import Model.Objects.Node;
+import View.LatLonToPixelTranslator;
 import View.Objects.Point;
 import java.util.ArrayList;
 import javafx.scene.Group;
 import javafx.scene.shape.Circle;
 
 public class NodeDrawer {
-  private ModelToController modelToController = new ModelToController();
+  private ControllerToView controllerToView = new ControllerToView();
   private LatLonToPixelTranslator translator = new LatLonToPixelTranslator();
   private ArrayList<Node> nodes;
-  private ArrayList<Edge> edges;
 
   public NodeDrawer() {
-    nodes = modelToController.getAllNodes();
-    edges = modelToController.getAllEdges();
+    nodes = controllerToView.getAllNodes();
   }
 
   public Group drawAllNodes(Group group) {

@@ -1,6 +1,7 @@
 package Model;
 
 import Model.Objects.Edge;
+import Model.Objects.Storage;
 import java.io.File;
 import java.io.IOException;
 import javax.xml.parsers.DocumentBuilder;

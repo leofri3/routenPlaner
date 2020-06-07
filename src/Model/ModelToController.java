@@ -15,7 +15,7 @@ public class ModelToController implements ModelToControllerInterface {
 
   @Override
   public ArrayList getAllEdges() {
-    return xmlReader.getStorage().getNodes();
+    return xmlReader.getStorage().getEdges();
   }
 
   @Override
