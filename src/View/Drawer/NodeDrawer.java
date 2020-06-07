@@ -11,11 +11,12 @@ import javafx.scene.Group;
 import javafx.scene.shape.Circle;
 
 public class NodeDrawer {
-  private ControllerToView controllerToView = new ControllerToView();
+  private ControllerToView controllerToView;
   private LatLonToPixelTranslator translator = new LatLonToPixelTranslator();
   private ArrayList<Node> nodes;
 
-  public NodeDrawer() {
+  public NodeDrawer(ControllerToView controllerToView) {
+    this.controllerToView = controllerToView;
     nodes = controllerToView.getAllNodes();
   }
 

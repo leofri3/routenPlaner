@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ControllerToView;
 import View.Drawer.EdgeDrawer;
 import View.Drawer.NodeDrawer;
 import java.io.FileInputStream;
@@ -15,8 +16,9 @@ import javafx.stage.Stage;
 
 public class UI extends Application {
 
-  private NodeDrawer nodeDrawer = new NodeDrawer();
-  private EdgeDrawer edgeDrawer = new EdgeDrawer();
+  private ControllerToView controllerToView = new ControllerToView();
+  private NodeDrawer nodeDrawer = new NodeDrawer(controllerToView);
+  private EdgeDrawer edgeDrawer = new EdgeDrawer(controllerToView);
   private Group group = new Group();
 
 

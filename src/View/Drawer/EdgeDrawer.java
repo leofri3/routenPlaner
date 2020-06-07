@@ -10,11 +10,12 @@ import javafx.scene.Group;
 import javafx.scene.shape.Line;
 
 public class EdgeDrawer {
-  private ControllerToView controllerToView = new ControllerToView();
+  private ControllerToView controllerToView;
   private LatLonToPixelTranslator translator = new LatLonToPixelTranslator();
   private ArrayList<Edge> edges;
 
-  public EdgeDrawer() {
+  public EdgeDrawer(ControllerToView controllerToView) {
+    this.controllerToView = controllerToView;
     edges = controllerToView.getAllEdges();
   }
 
