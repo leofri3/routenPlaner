@@ -86,8 +86,8 @@ public class XmlReader {
     edge.setSource(sourceNode.getId());
     edge.setTarget(targetNode.getId());
 
-    sourceNode.getEdges().add(edge);
-    targetNode.getEdges().add(edge);
+    sourceNode.getOutgoingEdges().add(edge);
+    targetNode.getIncomingEdges().add(edge);
 
     return edge;
   }

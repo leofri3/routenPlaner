@@ -14,6 +14,8 @@ public interface ControllerToViewInterface {
 
   public ArrayList getRouteEdges();
 
+  public ArrayList getRoute();
+
   public Node getNodeByName(String name);
 
   public Edge getEdgeByName(String name);

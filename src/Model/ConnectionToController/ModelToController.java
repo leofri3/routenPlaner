@@ -1,8 +1,8 @@
 package Model.ConnectionToController;
 
-import Model.ConnectionToController.ModelToControllerInterface;
 import Model.Objects.Edge;
 import Model.Objects.Node;
+import Model.Objects.Storage;
 import Model.XmlReader;
 import java.util.ArrayList;
 
@@ -19,6 +19,9 @@ public class ModelToController implements ModelToControllerInterface {
   public ArrayList getAllEdges() {
     return xmlReader.getStorage().getEdges();
   }
+
+  @Override
+  public Storage getStorage() { return xmlReader.getStorage(); }
 
   @Override
   public Node getNodeByName(String name) {
