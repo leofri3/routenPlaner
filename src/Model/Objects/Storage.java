@@ -1,7 +1,5 @@
 package Model.Objects;
 
-import Model.Objects.Edge;
-import Model.Objects.Node;
 import java.util.ArrayList;
 
 public class Storage {

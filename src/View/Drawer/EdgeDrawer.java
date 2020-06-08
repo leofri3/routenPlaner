@@ -10,6 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.shape.Line;
 
 public class EdgeDrawer {
+
   private ControllerToView controllerToView;
   private LatLonToPixelTranslator translator = new LatLonToPixelTranslator();
 

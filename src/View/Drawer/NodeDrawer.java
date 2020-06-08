@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.shape.Circle;
 
 public class NodeDrawer {
+
   private ControllerToView controllerToView;
   private LatLonToPixelTranslator translator = new LatLonToPixelTranslator();
   private ArrayList<Node> nodes;

@@ -3,6 +3,7 @@ package Controller.Algorithms.Dijkstra;
 import Model.Objects.Node;
 
 public class DijkstraNode {
+
   private Node node;
   private float cost;
   private boolean visited;
@@ -22,20 +23,20 @@ public class DijkstraNode {
     return cost;
   }
 
-  public boolean isVisited() {
-    return visited;
-  }
-
-  public DijkstraNode getPredecessor() {
-    return predecessor;
-  }
-
   public void setCost(float cost) {
     this.cost = cost;
   }
 
+  public boolean isVisited() {
+    return visited;
+  }
+
   public void setVisited(boolean visited) {
     this.visited = visited;
+  }
+
+  public DijkstraNode getPredecessor() {
+    return predecessor;
   }
 
   public void setPredecessor(DijkstraNode predecessor) {

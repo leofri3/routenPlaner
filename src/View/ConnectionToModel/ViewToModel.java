@@ -1,19 +1,19 @@
 package View.ConnectionToModel;
 
-public class ViewToModel implements ViewToModelInterface{
+public class ViewToModel implements ViewToModelInterface {
 
   @Override
   public String getAlgorithm() {
-    return null;
+    return "dijkstra";    //change to function (just testing)
   }
 
   @Override
   public String getStartNodeID() {
-    return null;
+    return "BREMER KREUZ";    //change to function (just testing)
   }
 
   @Override
   public String getDestinationID() {
-    return null;
+    return "THOLEY - HASBORN (A 1)";    //change to function (just testing)
   }
 }

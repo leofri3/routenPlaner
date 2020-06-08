@@ -28,8 +28,9 @@ public class UI extends Application {
     root.setTop(menuBarBuilder.build());
 
     group.getChildren().add(imageLoader.getImage());
-    nodeDrawer.drawAllNodes(group);
-    edgeDrawer.drawAllEdges(group);
+
+    nodeDrawer.drawRouteNodes(group);
+    edgeDrawer.drawRouteEdges(group);
     root.setLeft(group);
 
     primaryStage.setScene(new Scene(root));

@@ -8,14 +8,19 @@ import View.ConnectionToModel.ViewToModel;
 import java.util.ArrayList;
 
 public class AlgorithmStarter {
+
   private ModelToController modelToController = new ModelToController();
-  private ViewToModel viewToModel = new ViewToModel();
+  private ViewToModel viewToModel;
   private ArrayList<Node> routeNodes;
   private ArrayList<Edge> routeEdges;
   private ArrayList<Object> route;
   private String algorithm;
   private String startNodeID;
   private String destinationNodeID;
+
+  public AlgorithmStarter(ViewToModel viewToModel) {
+    this.viewToModel = viewToModel;
+  }
 
   public ArrayList<Node> getRouteNodes() {
     return routeNodes;
