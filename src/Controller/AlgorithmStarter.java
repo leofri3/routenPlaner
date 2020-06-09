@@ -4,13 +4,13 @@ import Controller.Algorithms.Dijkstra.Dijkstra;
 import Model.ConnectionToController.ModelToController;
 import Model.Objects.Edge;
 import Model.Objects.Node;
-import View.ConnectionToModel.ViewToModel;
+import View.ConnectionToModel.ViewToController;
 import java.util.ArrayList;
 
 public class AlgorithmStarter {
 
-  private ModelToController modelToController = new ModelToController();
-  private ViewToModel viewToModel;
+  private ModelToController modelToController;
+  private ViewToController viewToController;
   private ArrayList<Node> routeNodes;
   private ArrayList<Edge> routeEdges;
   private ArrayList<Object> route;
@@ -18,8 +18,9 @@ public class AlgorithmStarter {
   private String startNodeID;
   private String destinationNodeID;
 
-  public AlgorithmStarter(ViewToModel viewToModel) {
-    this.viewToModel = viewToModel;
+  public AlgorithmStarter(ViewToController viewToController, ModelToController modelToController) {
+    this.viewToController = viewToController;
+    this.modelToController = modelToController;
   }
 
   public ArrayList<Node> getRouteNodes() {
@@ -50,7 +51,7 @@ public class AlgorithmStarter {
     Dijkstra dijkstra = new Dijkstra(modelToController);
     dijkstra.setStartNode(modelToController.getNodeByName(startNodeID));
     dijkstra.setDestinationNode(modelToController.getNodeByName(destinationNodeID));
-    dijkstra.dijkstra();
+    dijkstra.startAlgorithm();
     routeNodes = dijkstra.getRouteNodes();
     routeEdges = dijkstra.getRouteEdges();
     route = dijkstra.getRoute();

@@ -1,19 +1,26 @@
 package Controller;
 
+import Model.ConnectionToController.ModelToController;
 import Model.Objects.Edge;
 import Model.Objects.Node;
-import View.ConnectionToModel.ViewToModel;
+import View.ConnectionToModel.ViewToController;
 import java.util.ArrayList;
 
 public class Controller {
 
-  private ViewToModel viewToModel = new ViewToModel();
-  private AlgorithmStarter algorithmStarter = new AlgorithmStarter(viewToModel);
+  private ViewToController viewToController = new ViewToController();
+  private AlgorithmStarter algorithmStarter;
+  private ModelToController modelToController = new ModelToController();
+
+  public Controller(ModelToController modelToController) {
+    this.modelToController = new ModelToController();
+    algorithmStarter = new AlgorithmStarter(viewToController, this.modelToController);
+  }
 
   public void calculateRoute() {
-    algorithmStarter.setAlgorithm(viewToModel.getAlgorithm());
-    algorithmStarter.setStartNodeID(viewToModel.getStartNodeID());
-    algorithmStarter.setDestinationNodeID(viewToModel.getDestinationID());
+    algorithmStarter.setAlgorithm(viewToController.getAlgorithm());
+    algorithmStarter.setStartNodeID(viewToController.getStartNodeID());
+    algorithmStarter.setDestinationNodeID(viewToController.getDestinationID());
     algorithmStarter.startAlgorithm();
   }
 

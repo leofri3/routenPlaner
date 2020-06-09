@@ -18,6 +18,7 @@ public class XmlReader {
   private Storage storage;
 
   public XmlReader() {
+    System.out.println("store");
     storeXMLFile();
   }
 

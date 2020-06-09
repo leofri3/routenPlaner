@@ -29,8 +29,8 @@ public class UI extends Application {
 
     group.getChildren().add(imageLoader.getImage());
 
-    nodeDrawer.drawRouteNodes(group);
-    edgeDrawer.drawRouteEdges(group);
+    nodeDrawer.drawAllNodes(group);
+    edgeDrawer.drawAllEdges(group);
     root.setLeft(group);
 
     primaryStage.setScene(new Scene(root));

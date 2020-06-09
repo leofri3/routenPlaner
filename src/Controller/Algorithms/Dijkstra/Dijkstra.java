@@ -1,12 +1,13 @@
 package Controller.Algorithms.Dijkstra;
 
+import Controller.Algorithms.Algorithm;
 import Model.ConnectionToController.ModelToController;
 import Model.Objects.Edge;
 import Model.Objects.Node;
 import Model.Objects.Storage;
 import java.util.ArrayList;
 
-public class Dijkstra {
+public class Dijkstra implements Algorithm {
 
   ArrayList<DijkstraNode> stack;
   ArrayList<DijkstraNode> queue = new ArrayList<>();
@@ -51,7 +52,7 @@ public class Dijkstra {
     }
   }
 
-  public void dijkstra() {
+  public void startAlgorithm() {
     setDijkstraNodes();   //converts Node to DijkstraNode
     queue.add(startNode);
     boolean finished = false;
