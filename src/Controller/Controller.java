@@ -10,10 +10,10 @@ public class Controller {
 
   private ViewToController viewToController = new ViewToController();
   private AlgorithmStarter algorithmStarter;
-  private ModelToController modelToController = new ModelToController();
+  private ModelToController modelToController;
 
   public Controller(ModelToController modelToController) {
-    this.modelToController = new ModelToController();
+    this.modelToController = modelToController;
     algorithmStarter = new AlgorithmStarter(viewToController, this.modelToController);
   }
 
