@@ -4,17 +4,19 @@ import Model.ConnectionToController.ModelToController;
 import Model.Objects.Edge;
 import Model.Objects.Node;
 import View.ConnectionToModel.ViewToController;
+import View.UI;
 import java.util.ArrayList;
 
 public class Controller {
 
-  private ViewToController viewToController = new ViewToController();
+  private ViewToController viewToController;
   private AlgorithmStarter algorithmStarter;
   private ModelToController modelToController;
 
-  public Controller(ModelToController modelToController) {
+  public Controller(ModelToController modelToController, ViewToController viewToController) {
     this.modelToController = modelToController;
-    algorithmStarter = new AlgorithmStarter(viewToController, this.modelToController);
+    this.viewToController = viewToController;
+    algorithmStarter = new AlgorithmStarter(this.modelToController);
   }
 
   public void calculateRoute() {

@@ -3,6 +3,7 @@ package View.Drawer;
 import Controller.ConnectionToView.ControllerToView;
 import Model.Objects.Edge;
 import Model.Objects.Node;
+import View.ImageLoader;
 import View.LatLonToPixelTranslator;
 import View.Objects.Point;
 import java.util.ArrayList;
@@ -13,12 +14,15 @@ public class EdgeDrawer {
 
   private ControllerToView controllerToView;
   private LatLonToPixelTranslator translator = new LatLonToPixelTranslator();
+  private ImageLoader imageLoader = new ImageLoader();
 
   public EdgeDrawer(ControllerToView controllerToView) {
     this.controllerToView = controllerToView;
   }
 
   private Group draw(Group group, ArrayList<Edge> routeEdges) {
+    group.getChildren().clear();
+    group.getChildren().add(imageLoader.getImage());
     for (Edge edge : routeEdges) {
       Node sourceNode = controllerToView.getNodeByName(edge.getSource());
       Node targetNode = controllerToView.getNodeByName(edge.getTarget());

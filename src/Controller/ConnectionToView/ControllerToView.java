@@ -4,12 +4,21 @@ import Controller.Controller;
 import Model.ConnectionToController.ModelToController;
 import Model.Objects.Edge;
 import Model.Objects.Node;
+import View.ConnectionToModel.ViewToController;
 import java.util.ArrayList;
 
 public class ControllerToView {
 
-  ModelToController modelToController = new ModelToController();
-  private Controller controller = new Controller(modelToController);
+  private ModelToController modelToController = new ModelToController();
+  private ViewToController viewToController;
+  private Controller controller;
+
+
+  public ControllerToView(ViewToController viewToController) {
+    this.viewToController = viewToController;
+    this.controller = new Controller(modelToController, viewToController);
+  }
+
 
   public ArrayList getAllNodes() {
     return modelToController.getAllNodes();

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class AlgorithmStarter {
 
   private ModelToController modelToController;
-  private ViewToController viewToController;
   private ArrayList<Node> routeNodes;
   private ArrayList<Edge> routeEdges;
   private ArrayList<Object> route;
@@ -18,8 +17,7 @@ public class AlgorithmStarter {
   private String startNodeID;
   private String destinationNodeID;
 
-  public AlgorithmStarter(ViewToController viewToController, ModelToController modelToController) {
-    this.viewToController = viewToController;
+  public AlgorithmStarter(ModelToController modelToController) {
     this.modelToController = modelToController;
   }
 

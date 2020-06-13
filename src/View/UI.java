@@ -1,35 +1,43 @@
 package View;
 
 import Controller.ConnectionToView.ControllerToView;
+import View.ConnectionToModel.ViewToController;
 import View.Drawer.EdgeDrawer;
 import View.Drawer.NodeDrawer;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class UI extends Application {
 
-  private ControllerToView controllerToView = new ControllerToView();
+  private ViewToController viewToController = new ViewToController();
+  private ControllerToView controllerToView = new ControllerToView(viewToController);
   private NodeDrawer nodeDrawer = new NodeDrawer(controllerToView);
   private EdgeDrawer edgeDrawer = new EdgeDrawer(controllerToView);
-  private ImageLoader imageLoader = new ImageLoader();
   private MenuBarBuilder menuBarBuilder = new MenuBarBuilder();
-  private NodeLists nodeLists = new NodeLists();
+  private NodeNameGetter nodeNameGetter = new NodeNameGetter(controllerToView);
   private Group group = new Group();
+  private String startNodeID;
+  private String endNodeID;
+  private String algorithm;
 
 
   @Override
   public void start(Stage primaryStage) {
     primaryStage.setTitle("Route finder");
-
 
     HBox root = new HBox();
     VBox leftPartVBox = new VBox();
@@ -40,8 +48,8 @@ public class UI extends Application {
 
     Text startText = new Text("Start:");
     Text endText = new Text("Ziel:");
-    ComboBox startDropdown = new ComboBox(nodeLists.getStartNodes());
-    ComboBox endDropdown = new ComboBox(nodeLists.getEndNodes());
+    ComboBox startDropdown = new ComboBox(nodeNameGetter.getNodeIds());
+    ComboBox endDropdown = new ComboBox(nodeNameGetter.getNodeIds());
     Button calculateButton = new Button("Route berechnen");
     TextArea routeText = new TextArea();
 
@@ -53,6 +61,18 @@ public class UI extends Application {
     buttonsHBox.getChildren().addAll(menuBarBuilder.build(), calculateButton);
     startend.getChildren().addAll(startDropdownHBox, endDropdownHBox);
     leftPartVBox.getChildren().addAll(startend, buttonsHBox, routeText);
+
+    calculateButton.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent actionEvent) {
+        viewToController.setStartNOdeID(startDropdown.getValue().toString());
+        viewToController.setDestinationID(endDropdown.getValue().toString());
+        viewToController.setAlgorithm("dijkstra");
+
+        nodeDrawer.drawRouteNodes(group);
+        edgeDrawer.drawRouteEdges(group);
+      }
+    });
 
     startDropdown.setMinWidth(425);
     endDropdown.setMinWidth(425);
@@ -69,9 +89,6 @@ public class UI extends Application {
 
     leftPartVBox.setSpacing(25);
 
-
-
-    group.getChildren().add(imageLoader.getImage());
     nodeDrawer.drawAllNodes(group);
     edgeDrawer.drawAllEdges(group);
 
@@ -82,5 +99,17 @@ public class UI extends Application {
     primaryStage.setScene(scene);
     primaryStage.setResizable(false);
     primaryStage.show();
+  }
+
+  public String getStartNodeID() {
+    return startNodeID;
+  }
+
+  public String getEndNodeID() {
+    return endNodeID;
+  }
+
+  public String getAlgorithm() {
+    return algorithm;
   }
 }

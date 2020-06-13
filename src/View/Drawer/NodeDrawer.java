@@ -2,6 +2,7 @@ package View.Drawer;
 
 import Controller.ConnectionToView.ControllerToView;
 import Model.Objects.Node;
+import View.ImageLoader;
 import View.LatLonToPixelTranslator;
 import View.Objects.Point;
 import java.util.ArrayList;
@@ -12,14 +13,15 @@ public class NodeDrawer {
 
   private ControllerToView controllerToView;
   private LatLonToPixelTranslator translator = new LatLonToPixelTranslator();
-  private ArrayList<Node> nodes;
+  private ImageLoader imageLoader = new ImageLoader();
 
   public NodeDrawer(ControllerToView controllerToView) {
     this.controllerToView = controllerToView;
-    nodes = controllerToView.getAllNodes();
   }
 
   private Group draw(Group group, ArrayList<Node> routeNodes) {
+    group.getChildren().clear();
+    group.getChildren().add(imageLoader.getImage());
     for (Node node : routeNodes) {
       Point point = translator.translateNode(node);
       Circle circle = new Circle(point.getX(), point.getY(), 1);
