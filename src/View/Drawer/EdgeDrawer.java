@@ -8,6 +8,7 @@ import View.LatLonToPixelTranslator;
 import View.Objects.Point;
 import java.util.ArrayList;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class EdgeDrawer {
@@ -20,7 +21,7 @@ public class EdgeDrawer {
     this.controllerToView = controllerToView;
   }
 
-  private Group draw(Group group, ArrayList<Edge> routeEdges) {
+  private Group draw(Group group, ArrayList<Edge> routeEdges, Boolean Route) {
     group.getChildren().clear();
     group.getChildren().add(imageLoader.getImage());
     for (Edge edge : routeEdges) {
@@ -30,6 +31,13 @@ public class EdgeDrawer {
       Point targetPoint = translator.translateNode(targetNode);
 
       Line line = new Line(sourcePoint.getX(), sourcePoint.getY(), targetPoint.getX(), targetPoint.getY());
+      if (Route == true) {
+        line.setStroke(Color.RED);
+      }
+      else  {
+        line.setStroke(Color.BLACK);
+      }
+
       group.getChildren().add(line);
     }
     return group;
@@ -37,11 +45,11 @@ public class EdgeDrawer {
 
   public Group drawAllEdges(Group group) {
     ArrayList<Edge> allEdges = controllerToView.getAllEdges();
-    return draw(group, allEdges);
+    return draw(group, allEdges, false);
   }
 
   public Group drawRouteEdges(Group group) {
     ArrayList<Edge> routeEdges = controllerToView.getRouteEdges();
-    return draw(group, routeEdges);
+    return draw(group, routeEdges, true);
   }
 }
