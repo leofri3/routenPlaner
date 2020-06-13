@@ -131,5 +131,7 @@ public class Dijkstra implements Algorithm {
       }
       dNode = dNode.getPredecessor();
     }
+    route.add(startNode);
+    routeNodes.add(startNode.getNode());
   }
 }
