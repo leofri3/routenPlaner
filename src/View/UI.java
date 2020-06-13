@@ -5,6 +5,7 @@ import View.ConnectionToModel.ViewToController;
 import View.Drawer.EdgeDrawer;
 import View.Drawer.NodeDrawer;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -27,7 +28,6 @@ public class UI extends Application {
   private ControllerToView controllerToView = new ControllerToView(viewToController);
   private NodeDrawer nodeDrawer = new NodeDrawer(controllerToView);
   private EdgeDrawer edgeDrawer = new EdgeDrawer(controllerToView);
-  private MenuBarBuilder menuBarBuilder = new MenuBarBuilder();
   private NodeNameGetter nodeNameGetter = new NodeNameGetter(controllerToView);
   private Group group = new Group();
   private String startNodeID;
@@ -50,15 +50,18 @@ public class UI extends Application {
     Text endText = new Text("Ziel:");
     ComboBox startDropdown = new ComboBox(nodeNameGetter.getNodeIds());
     ComboBox endDropdown = new ComboBox(nodeNameGetter.getNodeIds());
+    ComboBox algorithm = new ComboBox(FXCollections.observableArrayList("Dijkstra"));
     Button calculateButton = new Button("Route berechnen");
     TextArea routeText = new TextArea();
 
     Region endRegion = new Region();
     Region startRegion = new Region();
 
+    algorithm.setPromptText("Algorithmus");
+
     endDropdownHBox.getChildren().addAll(endText, endRegion, endDropdown);
     startDropdownHBox.getChildren().addAll(startText, startRegion, startDropdown);
-    buttonsHBox.getChildren().addAll(menuBarBuilder.build(), calculateButton);
+    buttonsHBox.getChildren().addAll(algorithm, calculateButton);
     startend.getChildren().addAll(startDropdownHBox, endDropdownHBox);
     leftPartVBox.getChildren().addAll(startend, buttonsHBox, routeText);
 
@@ -67,7 +70,7 @@ public class UI extends Application {
       public void handle(ActionEvent actionEvent) {
         viewToController.setStartNOdeID(startDropdown.getValue().toString());
         viewToController.setDestinationID(endDropdown.getValue().toString());
-        viewToController.setAlgorithm("dijkstra");
+        viewToController.setAlgorithm(algorithm.getValue().toString());
 
         nodeDrawer.drawRouteNodes(group);
         edgeDrawer.drawRouteEdges(group);
