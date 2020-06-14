@@ -26,8 +26,7 @@ public class NodeDrawer {
       Circle circle = new Circle(point.getX(), point.getY(), 0.5);
       if (Route == true) {
         circle.setStroke(Color.RED);
-      }
-      else  {
+      } else {
         circle.setStroke(Color.BLACK);
       }
       group.getChildren().add(circle);

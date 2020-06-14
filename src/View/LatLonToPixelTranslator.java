@@ -21,12 +21,12 @@ public class LatLonToPixelTranslator {
   }
 
   private double getLonPerPixel() {
-     lonPerPixel = Math.abs((referencePoint2.getPixelX() - referencePoint1.getPixelX()) / (referencePoint2.getLon() - referencePoint1.getLon()));
+    lonPerPixel = Math.abs((referencePoint2.getPixelX() - referencePoint1.getPixelX()) / (referencePoint2.getLon() - referencePoint1.getLon()));
     return lonPerPixel;
   }
 
   private double getLatPerPixel() {
-     latPerPixel = Math.abs((referencePoint2.getPixelY() - referencePoint1.getPixelY()) / (referencePoint2.getLat() - referencePoint1.getLat()));
+    latPerPixel = Math.abs((referencePoint2.getPixelY() - referencePoint1.getPixelY()) / (referencePoint2.getLat() - referencePoint1.getLat()));
     return latPerPixel;
   }
 

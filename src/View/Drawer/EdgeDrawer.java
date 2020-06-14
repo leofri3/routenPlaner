@@ -33,8 +33,7 @@ public class EdgeDrawer {
       Line line = new Line(sourcePoint.getX(), sourcePoint.getY(), targetPoint.getX(), targetPoint.getY());
       if (Route == true) {
         line.setStroke(Color.RED);
-      }
-      else  {
+      } else {
         line.setStroke(Color.BLACK);
       }
 

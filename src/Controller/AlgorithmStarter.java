@@ -4,7 +4,6 @@ import Controller.Algorithms.Dijkstra.Dijkstra;
 import Model.ConnectionToController.ModelToController;
 import Model.Objects.Edge;
 import Model.Objects.Node;
-import View.ConnectionToModel.ViewToController;
 import java.util.ArrayList;
 
 public class AlgorithmStarter {

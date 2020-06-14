@@ -19,8 +19,7 @@ public class Exporter {
         writer.newLine();
         if (i == 0) {
           writer.write(node.getId());
-        }
-        else  {
+        } else {
           writer.write(node.getId() + " -->");
         }
         writer.flush();

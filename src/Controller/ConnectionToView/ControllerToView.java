@@ -43,7 +43,9 @@ public class ControllerToView {
     return controller.getRoute();
   }
 
-  public Node getNodeByName(String name) { return modelToController.getNodeByName(name); }
+  public Node getNodeByName(String name) {
+    return modelToController.getNodeByName(name);
+  }
 
   public Edge getEdgeByName(String name) {
     return modelToController.getEdgeByName(name);
