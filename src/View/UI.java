@@ -29,6 +29,7 @@ public class UI extends Application {
   private NodeDrawer nodeDrawer = new NodeDrawer(controllerToView);
   private EdgeDrawer edgeDrawer = new EdgeDrawer(controllerToView);
   private NodeNameGetter nodeNameGetter = new NodeNameGetter(controllerToView);
+  private TextareaConsole textareaConsole = new TextareaConsole(controllerToView);
   private Group group = new Group();
   private String startNodeID;
   private String endNodeID;
@@ -76,6 +77,8 @@ public class UI extends Application {
 
         edgeDrawer.drawRouteEdges(group);
         nodeDrawer.drawRouteNodes(group);
+
+        textareaConsole.setRouteText(routeText);
       }
     });
 
@@ -105,7 +108,7 @@ public class UI extends Application {
     buttonsHBox.setAlignment(Pos.CENTER);
 
     routeText.setMinHeight(400);
-    routeText.setDisable(true);
+    routeText.setEditable(false);
 
     leftPartVBox.setSpacing(25);
 
