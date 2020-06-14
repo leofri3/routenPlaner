@@ -7,6 +7,9 @@
 #Png files
 *.png
 
+#Txt files
+*.txt
+
 # Log file
 *.log
 

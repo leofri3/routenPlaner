@@ -52,6 +52,7 @@ public class UI extends Application {
     ComboBox endDropdown = new ComboBox(nodeNameGetter.getNodeIds());
     ComboBox algorithm = new ComboBox(FXCollections.observableArrayList("Dijkstra"));
     Button calculateButton = new Button("Route berechnen");
+    Button showAllButton = new Button("Alle anzeigen");
     Button exportButton = new Button("Exportieren");
     TextArea routeText = new TextArea();
 
@@ -62,7 +63,7 @@ public class UI extends Application {
 
     endDropdownHBox.getChildren().addAll(endText, endRegion, endDropdown);
     startDropdownHBox.getChildren().addAll(startText, startRegion, startDropdown);
-    buttonsHBox.getChildren().addAll(algorithm, calculateButton, exportButton);
+    buttonsHBox.getChildren().addAll(algorithm, calculateButton, showAllButton, exportButton);
     startend.getChildren().addAll(startDropdownHBox, endDropdownHBox);
     leftPartVBox.getChildren().addAll(startend, buttonsHBox, routeText);
 
@@ -73,8 +74,8 @@ public class UI extends Application {
         viewToController.setDestinationID(endDropdown.getValue().toString());
         viewToController.setAlgorithm(algorithm.getValue().toString());
 
-        nodeDrawer.drawRouteNodes(group);
         edgeDrawer.drawRouteEdges(group);
+        nodeDrawer.drawRouteNodes(group);
       }
     });
 
@@ -82,6 +83,14 @@ public class UI extends Application {
       @Override
       public void handle(ActionEvent actionEvent) {
         viewToController.exportToTxt(controllerToView.getRouteNodes());
+      }
+    });
+
+    showAllButton.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent actionEvent) {
+        edgeDrawer.drawAllEdges(group);
+        nodeDrawer.drawAllNodes(group);
       }
     });
 
@@ -100,8 +109,8 @@ public class UI extends Application {
 
     leftPartVBox.setSpacing(25);
 
-    nodeDrawer.drawAllNodes(group);
     edgeDrawer.drawAllEdges(group);
+    nodeDrawer.drawAllNodes(group);
 
     root.getChildren().addAll(leftPartVBox, group);
 

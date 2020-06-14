@@ -7,6 +7,7 @@ import View.LatLonToPixelTranslator;
 import View.Objects.Point;
 import java.util.ArrayList;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class NodeDrawer {
@@ -19,12 +20,16 @@ public class NodeDrawer {
     this.controllerToView = controllerToView;
   }
 
-  private Group draw(Group group, ArrayList<Node> routeNodes) {
-    group.getChildren().clear();
-    group.getChildren().add(imageLoader.getImage());
+  private Group draw(Group group, ArrayList<Node> routeNodes, Boolean Route) {
     for (Node node : routeNodes) {
       Point point = translator.translateNode(node);
-      Circle circle = new Circle(point.getX(), point.getY(), 1);
+      Circle circle = new Circle(point.getX(), point.getY(), 0.5);
+      if (Route == true) {
+        circle.setStroke(Color.RED);
+      }
+      else  {
+        circle.setStroke(Color.BLACK);
+      }
       group.getChildren().add(circle);
     }
     return group;
@@ -32,11 +37,11 @@ public class NodeDrawer {
 
   public Group drawAllNodes(Group group) {
     ArrayList<Node> allNodes = controllerToView.getAllNodes();
-    return draw(group, allNodes);
+    return draw(group, allNodes, false);
   }
 
   public Group drawRouteNodes(Group group) {
     ArrayList<Node> routeNodes = controllerToView.getRouteNodes();
-    return draw(group, routeNodes);
+    return draw(group, routeNodes, true);
   }
 }
